@@ -1,0 +1,53 @@
+.play-container {
+  width: 100vw;
+  height: 100vh;
+  background: repeating-linear-gradient(
+    -45deg,
+    #DC0073,
+    #DC0073 80px,
+    #89FC00 80px,
+    #89FC00 160px
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-container {
+  width: 90vw;
+  height: 90vh;
+  background: #F5EFED;
+}
+
+.game-main-header {
+  font-size: 4rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  font-family: "Micro 5";
+  color: #DC0073;
+}
+
+.game-links {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  align-items: center;
+  height: 4rem;
+  justify-content: space-evenly;
+}
+
+@media (min-width: 800px) {
+  .game-main-header {
+    font-size: 8rem;
+    margin-top: 2rem;
+  }
+
+  .game-links {
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 60%;
+    margin: 1rem auto 0 auto;
+    font-size: 1.4rem;
+  }
+}

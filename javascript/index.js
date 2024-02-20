@@ -1,5 +1,5 @@
-const subHeader = document.querySelector(".main-subheader");
+// const subHeader = document.querySelector(".main-subheader");
 
-subHeader.addEventListener("click", () => {
-  window.location.href = "/play";
-});
+// subHeader.addEventListener("click", () => {
+//   window.location.href = "/play";
+// });

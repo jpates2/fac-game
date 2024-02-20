@@ -1,6 +1,12 @@
 @import "main.css";
+@import "play.css";
 
 body {
   margin: 0;
   font-family: "Onest";
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }

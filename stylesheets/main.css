@@ -7,10 +7,10 @@
   align-items: center;
   background: linear-gradient(
     to top,
-    #0F0A0A 0%,
-    #0F0A0A 50%,
-    #31CB00 50%,
-    #31CB00 100%
+    #DC0073 0%,
+    #DC0073 50%,
+    #89FC00 50%,
+    #89FC00 100%
   );
 }
 
@@ -21,10 +21,10 @@
   font-family: "Micro 5";
   background: linear-gradient(
     to top,
-    #31CB00 0%,
-    #31CB00 50%,
-    #0F0A0A 50%,
-    #0F0A0A 100%
+    #89FC00 0%,
+    #89FC00 50%,
+    #DC0073 50%,
+    #DC0073 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -41,7 +41,7 @@
 }
 
 .main-subheader:hover {
-  border: 2px dashed #31CB00;
+  border: 8px dashed #31CB00;
   padding: 2px 4px;
   cursor: pointer;
 }
