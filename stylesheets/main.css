@@ -41,9 +41,6 @@
 }
 
 .main-subheader:hover {
-  /* text-decoration: underline;
-  text-decoration-style: dashed; */
-  /* padding-bottom: 4px; */
   border: 2px dashed #31CB00;
   padding: 2px 4px;
   cursor: pointer;
