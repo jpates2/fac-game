@@ -37,6 +37,57 @@
   justify-content: space-evenly;
 }
 
+.game-instructions-link:hover,
+.game-scores-link:hover {
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  transform: scale(1.1);
+}
+
+.instructions-modal {
+  position: absolute;
+  width: 90vw;
+  height: 90vh;
+  background: #F5EFED;
+  padding: 4rem 2rem;
+  box-sizing: border-box;
+}
+
+.instructions-modal-header {
+  font-size: 2rem;
+  font-family: "Micro 5";
+  color: #DC0073;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.instructions-modal-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.instructions-modal-button {
+  all: unset;
+  background: #DC0073;
+  color: #F5EFED;
+  padding: 1rem;
+  font-weight: bold;
+  transition: transform 0.3s ease-in-out;
+}
+
+.instructions-modal-button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.instructions-modal-button:active {
+  cursor: pointer;
+  transform: scale(1);
+}
+
 @media (min-width: 800px) {
   .game-main-header {
     font-size: 8rem;
@@ -49,5 +100,13 @@
     width: 60%;
     margin: 1rem auto 0 auto;
     font-size: 1.4rem;
+  }
+
+  .instructions-modal {
+    padding: 4rem 8rem;
+  }
+
+  .instructions-modal-header {
+    font-size: 4rem;
   }
 }

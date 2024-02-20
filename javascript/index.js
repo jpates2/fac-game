@@ -1,5 +1,11 @@
-// const subHeader = document.querySelector(".main-subheader");
+const instructionsModalButton = document.querySelector(".instructions-modal-button");
+const instructionsModal = document.querySelector(".instructions-modal");
+const gameInstructionsLink = document.querySelector(".game-instructions-link");
 
-// subHeader.addEventListener("click", () => {
-//   window.location.href = "/play";
-// });
+gameInstructionsLink.addEventListener("click", () => {
+  instructionsModal.classList.remove("hidden");
+})
+
+instructionsModalButton.addEventListener("click", () => {
+  instructionsModal.classList.add("hidden");
+})
