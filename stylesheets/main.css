@@ -1,3 +1,77 @@
-.main-header-red {
-  color: red;
+.main-header-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    to top,
+    #0F0A0A 0%,
+    #0F0A0A 50%,
+    #31CB00 50%,
+    #31CB00 100%
+  );
 }
+
+.main-header {
+  max-width: 90%;
+  margin: 0 auto;
+  font-size: 24vw;
+  font-family: "Micro 5";
+  background: linear-gradient(
+    to top,
+    #31CB00 0%,
+    #31CB00 50%,
+    #0F0A0A 50%,
+    #0F0A0A 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.main-subheader {
+  color: #31CB00;
+  font-size: 2rem;
+  font-weight: bold;
+  position: absolute;
+  margin-top: 40vh;
+  animation: blink 3s linear infinite;
+  animation-delay: blink 2s;
+}
+
+.main-subheader:hover {
+  /* text-decoration: underline;
+  text-decoration-style: dashed; */
+  /* padding-bottom: 4px; */
+  border: 2px dashed #31CB00;
+  padding: 2px 4px;
+  cursor: pointer;
+}
+
+@keyframes blink{
+  0%{opacity: 0;}
+  50%{opacity: .5;}
+  100%{opacity: 1;}
+}
+
+@media (min-width: 800px) {
+  .main-header {
+    font-size: 20vw;
+  }
+}
+
+
+
+/*
+#CBFF4D
+#01BAEF
+
+
+
+whites
+#F5EFED
+
+blacks
+#0F0A0A
+*/
