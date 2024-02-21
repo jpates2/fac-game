@@ -19,7 +19,7 @@ const gameTimerClock = document.querySelector(".game-timer-clock");
 const scoresEmpty = document.querySelector(".scores-empty");
 const scoresTable = document.querySelector(".scores-table");
 
-let gamePlaying, bug, bugCurrent, score, timer, timerCountdown;
+let gamePlaying, bug, bugCurrent, score, timer, timerCountdown, clickTimer;
 let bugs = [];
 let topScores = [];
 
@@ -88,9 +88,29 @@ function buildTable() {
 
   const boardCell = document.querySelectorAll(".board-cell");
 
+  // bugCurrent.addEventListener("contextmenu", (e) => {
+  //   e.preventDefault();
+  //   markBugCell(e);
+  // });
+  // bugCurrent.addEventListener("click", revealBugCell);
   for (let i = 0; i < boardCell.length; i++) {
     bugCurrent = boardCell[i];
-    bugCurrent.addEventListener("click", revealBugCell);
+    bugCurrent.addEventListener("contextmenu", function(e) {
+      e.preventDefault();
+      markBugCell(e);
+    });
+
+    // bugCurrent.addEventListener("mousedown", function(e) {
+    //   console.log("down");
+    //   clickTimer = setTimeout(function() {
+    //   }, 1000);
+    // });
+
+    bugCurrent.addEventListener("mouseup", function(e) {
+      clearTimeout(clickTimer);
+      console.log("up");
+      revealBugCell(e);
+    });
   }
 }
 
@@ -112,6 +132,7 @@ function revealBugCell(e) {
     const bugCell = e.currentTarget;
     const bugRow = bugCell.parentElement.rowIndex;
     const bugCol = bugCell.cellIndex;
+    bugCell.classList.add("revealed-cell");
     const adjCells = [
       `cell-${bugRow - 1}-${bugCol - 1}`,
       `cell-${bugRow}-${bugCol - 1}`,
@@ -149,6 +170,18 @@ function revealBugCell(e) {
       bugCell.textContent = numBugs;
       bugCell.classList.add("number-cell-colour");
       bugCell.removeEventListener("click", revealBugCell);
+    }
+  }
+}
+
+function markBugCell(e) {
+  e.preventDefault();
+  const flagCell = e.currentTarget;
+  if (gamePlaying && !flagCell.classList.contains("revealed-cell")) {
+    if (flagCell.textContent === "") {
+      flagCell.textContent = "🚩";
+    } else {
+      flagCell.textContent = "";
     }
   }
 }
@@ -228,5 +261,3 @@ function populateTopScores() {
     })
   }
 }
-
-console.log(topScores)
