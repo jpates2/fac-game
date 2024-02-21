@@ -12,6 +12,7 @@ const playAgainButtom = document.querySelector(".play-again-button");
 const endModal = document.querySelector(".end-modal");
 const endModalHeader = document.querySelector(".end-modal-header");
 const gameMainHeader = document.querySelector(".game-main-header");
+const endScoreCounter = document.querySelector(".end-score-counter");
 
 let gamePlaying, bug, bugCurrent, score, timer;
 let bugs = [];
@@ -130,6 +131,7 @@ function revealBugCell(e) {
 
 function endGame() {
   gamePlaying = false;
+  endScoreCounter.innerText = score;
   endModal.classList.remove("hidden-delay");
   endModal.classList.add("fade-in");
 }
