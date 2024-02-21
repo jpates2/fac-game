@@ -21,7 +21,6 @@ const scoresTable = document.querySelector(".scores-table");
 
 let gamePlaying, bug, bugCurrent, score, timer, timerCountdown, clickTimer;
 let bugs = [];
-// let topScores = [];
 
 gameInstructionsLink.addEventListener("click", () => {
   instructionsModal.classList.remove("hidden");
@@ -88,11 +87,6 @@ function buildTable() {
 
   const boardCell = document.querySelectorAll(".board-cell");
 
-  // bugCurrent.addEventListener("contextmenu", (e) => {
-  //   e.preventDefault();
-  //   markBugCell(e);
-  // });
-  // bugCurrent.addEventListener("click", revealBugCell);
   for (let i = 0; i < boardCell.length; i++) {
     bugCurrent = boardCell[i];
     bugCurrent.addEventListener("contextmenu", function(e) {
@@ -100,15 +94,8 @@ function buildTable() {
       markBugCell(e);
     });
 
-    // bugCurrent.addEventListener("mousedown", function(e) {
-    //   console.log("down");
-    //   clickTimer = setTimeout(function() {
-    //   }, 1000);
-    // });
-
-    bugCurrent.addEventListener("mouseup", function(e) {
+    bugCurrent.addEventListener("click", function(e) {
       clearTimeout(clickTimer);
-      console.log("up");
       revealBugCell(e);
     });
   }
@@ -207,7 +194,6 @@ function timeUp() {
 }
 
 function saveScore(e) {
-  // topScores.push([username.value, score]);
   submitScore();
 
   endModal.classList.add("hidden-delay");
@@ -240,7 +226,6 @@ playAgainButtom.addEventListener("click", playAgain);
 
 async function populateTopScores() {
   const topScores = await getScores();
-  console.log(topScores);
 
   if (topScores.length === 0) {
     scoresEmpty.textContent = "Play now to get the first top score!";
