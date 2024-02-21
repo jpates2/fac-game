@@ -13,9 +13,13 @@ const endModal = document.querySelector(".end-modal");
 const endModalHeader = document.querySelector(".end-modal-header");
 const gameMainHeader = document.querySelector(".game-main-header");
 const endScoreCounter = document.querySelector(".end-score-counter");
+const saveButton = document.querySelector(".save-button");
+const username = document.getElementById("user-name");
+const gameTimerClock = document.querySelector(".game-timer-clock");
 
 let gamePlaying, bug, bugCurrent, score, timer;
 let bugs = [];
+let topScores = [];
 
 gameInstructionsLink.addEventListener("click", () => {
   instructionsModal.classList.remove("hidden");
@@ -39,10 +43,25 @@ function startGame() {
   gamecontainer.classList.add("fade-in");
   gamePlaying = true;
   score = 0;
+  timer = 10;
+  bugs = [];
+  gameScoreCounter.textContent = score;
   buildTable();
+
+  const timerCountdown = setInterval(function() {
+    if(timer <= 1) {
+      clearInterval(timerCountdown);
+      timeUp();
+      endGame();
+    }
+    timer--;
+    const minsTimer = `${Math.floor(timer / 60)}:${String(timer % 60).padStart(2, '0')}`
+    gameTimerClock.textContent = minsTimer;
+  }, 1000);
 }
 
 playButton.addEventListener("click", startGame);
+
 
 const cellID = function(i, j) {
   return 'cell-' + i + '-' + j;
@@ -142,12 +161,27 @@ function winGame() {
 
 function loseGame() {
   gameMainHeader.innerText = "BAD LUCK!";
-
 }
 
+function timeUp() {
+  gameMainHeader.innerText = "TIME'S UP!";
+}
+
+function saveScore(e) {
+  topScores.push([username.value, score])
+  console.log(topScores);
+}
+
+saveButton.addEventListener("click", saveScore);
+
 function playAgain() {
-  startGame();
+  playButton.classList.remove("fade-hide");
+  gamecontainer.classList.add("hidden-delay");
+  gamecontainer.classList.remove("fade-in");
   endModal.classList.add("hidden-delay");
+  gameMainHeader.innerText = "BUGSWEEPER";
+  gameTable.textContent = "";
+  username.value = "";
 }
 
 playAgainButtom.addEventListener("click", playAgain);
