@@ -174,7 +174,12 @@ function timeUp() {
 }
 
 function saveScore(e) {
-  topScores.push([username.value, score])
+  topScores.push([username.value, score]);
+  endModal.classList.add("hidden-delay");
+  endModal.classList.remove("fade-in");
+  populateTopScores();
+  scoresModal.classList.remove("hidden");
+  playAgain();
 }
 
 saveButton.addEventListener("click", saveScore);
@@ -203,10 +208,13 @@ function populateTopScores() {
       const scoreItem = document.createElement("tr");
       scoreItem.setAttribute("class", "scores-table-item");
       const usersRank = document.createElement("td");
+      usersRank.setAttribute("class", "scores-table-rank");
       const usersName = document.createElement("td");
+      usersName.setAttribute("class", "scores-table-name");
       const usersScore = document.createElement("td");
+      usersScore.setAttribute("class", "scores-table-score");
 
-      usersRank.textContent = rank;
+      usersRank.textContent = `${rank}.`;
       usersName.textContent = score[0];
       usersScore.textContent = score[1];
 
