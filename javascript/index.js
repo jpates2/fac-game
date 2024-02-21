@@ -21,7 +21,7 @@ const scoresTable = document.querySelector(".scores-table");
 
 let gamePlaying, bug, bugCurrent, score, timer, timerCountdown, clickTimer;
 let bugs = [];
-let topScores = [];
+// let topScores = [];
 
 gameInstructionsLink.addEventListener("click", () => {
   instructionsModal.classList.remove("hidden");
@@ -207,12 +207,21 @@ function timeUp() {
 }
 
 function saveScore(e) {
-  topScores.push([username.value, score]);
+  // topScores.push([username.value, score]);
+  submitScore();
+
   endModal.classList.add("hidden-delay");
   endModal.classList.remove("fade-in");
   populateTopScores();
   scoresModal.classList.remove("hidden");
   playAgain();
+}
+
+async function submitScore() {
+  await fetch("https://bugsweeper-f4752-default-rtdb.europe-west1.firebasedatabase.app/scores.json", {
+    method: "POST",
+    body: JSON.stringify({username: username.value, score: score})
+  })
 }
 
 saveButton.addEventListener("click", saveScore);
@@ -229,7 +238,10 @@ function playAgain() {
 
 playAgainButtom.addEventListener("click", playAgain);
 
-function populateTopScores() {
+async function populateTopScores() {
+  const topScores = await getScores();
+  console.log(topScores);
+
   if (topScores.length === 0) {
     scoresEmpty.textContent = "Play now to get the first top score!";
   } else {
@@ -260,4 +272,19 @@ function populateTopScores() {
       rank++;
     })
   }
+}
+
+async function getScores() {
+  const response = await fetch("https://bugsweeper-f4752-default-rtdb.europe-west1.firebasedatabase.app/scores.json");
+
+  if (!response.ok) { throw new Error("Failed to load data.") }
+
+  const scoresData = await response.json();
+  let scores = [];
+
+  for (const score in scoresData) {
+      scores.push([scoresData[score].username, scoresData[score].score])
+  }
+
+  return scores;
 }
