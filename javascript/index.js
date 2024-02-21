@@ -7,8 +7,13 @@ const gameScoresLink = document.querySelector(".game-scores-link");
 const playButton = document.querySelector(".play-button");
 const gamecontainer = document.querySelector(".game-container");
 const gameTable = document.querySelector(".game-table");
+const gameScoreCounter = document.querySelector(".game-score-counter");
+const playAgainButtom = document.querySelector(".play-again-button");
+const endModal = document.querySelector(".end-modal");
+const endModalHeader = document.querySelector(".end-modal-header");
+const gameMainHeader = document.querySelector(".game-main-header");
 
-let gamePlaying, bug, bugCurrent;
+let gamePlaying, bug, bugCurrent, score, timer;
 let bugs = [];
 
 gameInstructionsLink.addEventListener("click", () => {
@@ -32,6 +37,7 @@ function startGame() {
   gamecontainer.classList.remove("hidden-delay");
   gamecontainer.classList.add("fade-in");
   gamePlaying = true;
+  score = 0;
   buildTable();
 }
 
@@ -95,6 +101,51 @@ function revealBugCell(e) {
     if (bugCell.classList.contains("bug-cell")) {
       bugCell.textContent = "🪲";
       bugCell.classList.add("bug-cell-colour");
+      loseGame();
+      endGame();
+    } else {
+      score++;
+      gameScoreCounter.textContent = score;
+      if (score === 90) {
+        winGame();
+        endGame();
+      }
+
+      let numBugs = 0;
+
+      adjCells.forEach(function (cell) {
+        if (!cell.includes("--") && !cell.includes("10")) {
+          if (document.getElementById(cell).classList.contains("bug-cell")) {
+            numBugs++;
+          }
+        }
+      })
+
+      bugCell.textContent = numBugs;
+      bugCell.classList.add("number-cell-colour");
+      bugCell.removeEventListener("click", revealBugCell);
     }
   }
 }
+
+function endGame() {
+  gamePlaying = false;
+  endModal.classList.remove("hidden-delay");
+  endModal.classList.add("fade-in");
+}
+
+function winGame() {
+  gameMainHeader.innerText = "YOU WIN!";
+}
+
+function loseGame() {
+  gameMainHeader.innerText = "BAD LUCK!";
+
+}
+
+function playAgain() {
+  startGame();
+  endModal.classList.add("hidden-delay");
+}
+
+playAgainButtom.addEventListener("click", playAgain);
