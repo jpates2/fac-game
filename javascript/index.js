@@ -16,8 +16,10 @@ const endScoreCounter = document.querySelector(".end-score-counter");
 const saveButton = document.querySelector(".save-button");
 const username = document.getElementById("user-name");
 const gameTimerClock = document.querySelector(".game-timer-clock");
+const scoresEmpty = document.querySelector(".scores-empty");
+const scoresTable = document.querySelector(".scores-table");
 
-let gamePlaying, bug, bugCurrent, score, timer;
+let gamePlaying, bug, bugCurrent, score, timer, timerCountdown;
 let bugs = [];
 let topScores = [];
 
@@ -30,6 +32,7 @@ instructionsModalButton.addEventListener("click", () => {
 })
 
 gameScoresLink.addEventListener("click", () => {
+  populateTopScores();
   scoresModal.classList.remove("hidden");
 })
 
@@ -43,19 +46,21 @@ function startGame() {
   gamecontainer.classList.add("fade-in");
   gamePlaying = true;
   score = 0;
-  timer = 10;
-  bugs = [];
   gameScoreCounter.textContent = score;
+  timer = 30;
+  bugs = [];
   buildTable();
+  let minsTimer = `${Math.floor(timer / 60)}:${String(timer % 60).padStart(2, '0')}`;
+  gameTimerClock.textContent = minsTimer;
 
-  const timerCountdown = setInterval(function() {
+  timerCountdown = setInterval(function() {
     if(timer <= 1) {
       clearInterval(timerCountdown);
       timeUp();
       endGame();
     }
     timer--;
-    const minsTimer = `${Math.floor(timer / 60)}:${String(timer % 60).padStart(2, '0')}`
+    minsTimer = `${Math.floor(timer / 60)}:${String(timer % 60).padStart(2, '0')}`;
     gameTimerClock.textContent = minsTimer;
   }, 1000);
 }
@@ -133,7 +138,7 @@ function revealBugCell(e) {
 
       let numBugs = 0;
 
-      adjCells.forEach(function (cell) {
+      adjCells.forEach((cell) => {
         if (!cell.includes("--") && !cell.includes("10")) {
           if (document.getElementById(cell).classList.contains("bug-cell")) {
             numBugs++;
@@ -149,6 +154,7 @@ function revealBugCell(e) {
 }
 
 function endGame() {
+  clearInterval(timerCountdown);
   gamePlaying = false;
   endScoreCounter.innerText = score;
   endModal.classList.remove("hidden-delay");
@@ -169,7 +175,6 @@ function timeUp() {
 
 function saveScore(e) {
   topScores.push([username.value, score])
-  console.log(topScores);
 }
 
 saveButton.addEventListener("click", saveScore);
@@ -185,3 +190,35 @@ function playAgain() {
 }
 
 playAgainButtom.addEventListener("click", playAgain);
+
+function populateTopScores() {
+  if (topScores.length === 0) {
+    scoresEmpty.textContent = "Play now to get the first top score!";
+  } else {
+    scoresEmpty.textContent = "";
+    scoresTable.textContent = "";
+    const sortedScores = topScores.sort((a,b) => b[1] - a[1]);
+    let rank = 1;
+    sortedScores.forEach((score) => {
+      const scoreItem = document.createElement("tr");
+      scoreItem.setAttribute("class", "scores-table-item");
+      const usersRank = document.createElement("td");
+      const usersName = document.createElement("td");
+      const usersScore = document.createElement("td");
+
+      usersRank.textContent = rank;
+      usersName.textContent = score[0];
+      usersScore.textContent = score[1];
+
+      scoreItem.appendChild(usersRank);
+      scoreItem.appendChild(usersName);
+      scoreItem.appendChild(usersScore);
+
+      scoresTable.appendChild(scoreItem);
+
+      rank++;
+    })
+  }
+}
+
+console.log(topScores)

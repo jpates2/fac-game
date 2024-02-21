@@ -53,6 +53,9 @@
   background: #F5EFED;
   padding: 4rem 2rem;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .instructions-modal-header,
@@ -68,9 +71,11 @@
 
 .instructions-modal-button-container,
 .scores-modal-button-container {
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   justify-content: center;
+  position: absolute;
+  bottom: 20vh;
 }
 
 .pink-button {
@@ -205,6 +210,10 @@
   width: 60%;
   border-bottom: 4px solid #DC0073;
   text-align: center;
+}
+
+.scores-empty {
+  margin-top: 10vh;
 }
 
 @media (min-width: 600px) {
