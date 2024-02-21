@@ -14,3 +14,21 @@ a {
 .hidden {
   display: none;
 }
+
+.fade-hide {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 800ms, opacity 800ms;
+}
+
+.fade-in {
+  visibility: visible;
+  opacity: 100;
+  transition: visibility 0s linear 800ms, opacity 800ms;
+}
+
+.hidden-delay {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 2s ease;
+}

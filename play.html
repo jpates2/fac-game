@@ -20,26 +20,63 @@
       </h1>
     </header> -->
 
-    <main class="play-container">
-      <div class="game-container">
+    <main class="play-page-container">
+      <div class="play-container">
         <div class="game-main-header">BUGSWEEPER</div>
         <div class="game-links">
           <div class="game-instructions-link">INSTRUCTIONS</div>
           <div class="game-scores-link">TOP SCORES</div>
         </div>
+
+        <div class="play-button-container">
+          <button class="play-button pink-button">PLAY</button>
+        </div>
+
+        <div class="game-container hidden-delay">
+          <div class="game-timer">
+            <div>TIMER</div>
+            <div>0</div>
+          </div>
+          <div class="game-table-container">
+            <table class="game-table"></table>
+          </div>
+          <div class="game-score">
+            <div>SCORE</div>
+            <div>0</div>
+          </div>
+        </div>
       </div>
 
-      <div class="instructions-modal hidden">
+      <div class="instructions-modal">
         <div class="instructions-modal-header">INSTRUCTIONS</div>
         <div class="instructions-modal-text">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam obcaecati quae sunt necessitatibus harum consectetur natus rem corrupti praesentium impedit autem animi, molestias ipsa officia quam temporibus vero reiciendis eos hic, error repellat tempore dolorem doloremque deserunt! Omnis, maxime! A quaerat, voluptas quisquam consequatur voluptatum voluptates ducimus molestiae fuga, voluptatem asperiores est earum provident quasi. Minima, enim. Quaerat non ex iste maxime est. Fugiat explicabo dolores saepe eum illo doloribus commodi aperiam vel consequuntur eveniet quo, ducimus libero deleniti qui error ullam recusandae inventore velit maxime vitae minus repellat. Nisi repudiandae illum id quos dignissimos recusandae nesciunt dolores tempora iure?
         </div>
         <div class="instructions-modal-button-container">
-          <button class="instructions-modal-button">
+          <button class="instructions-modal-button pink-button">
             CLOSE
           </button>
         </div>
       </div>
+
+      <div class="scores-modal hidden">
+        <div class="scores-modal-header">TOP SCORES</div>
+        <div class="scores-modal-text">
+          <ol>
+            <li>1. Tom 90</li>
+            <li>2. Harry 82</li>
+            <li>3. Sarah 77</li>
+            <li>4. Karen 74</li>
+            <li>5. Amy 43</li>
+          </ol>
+        </div>
+        <div class="scores-modal-button-container">
+          <button class="scores-modal-button pink-button">
+            CLOSE
+          </button>
+        </div>
+      </div>
+
     </main>
 
   </body>
