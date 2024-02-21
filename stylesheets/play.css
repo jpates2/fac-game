@@ -159,6 +159,10 @@
   grid-column: 1 / span 2;
 }
 
+.bug-cell-colour {
+  background: #DC0073;
+}
+
 @media (min-width: 600px) {
   .game-container {
     top: 28vh;
