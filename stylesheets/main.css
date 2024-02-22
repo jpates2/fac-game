@@ -17,7 +17,7 @@
 .main-header {
   max-width: 90%;
   margin: 0 auto;
-  font-size: 24vw;
+  font-size: 20vw;
   font-family: "Micro 5";
   background: linear-gradient(
     to top,
@@ -52,11 +52,6 @@
   100%{opacity: 1;}
 }
 
-@media (min-width: 800px) {
-  .main-header {
-    font-size: 20vw;
-  }
-}
 
 
 

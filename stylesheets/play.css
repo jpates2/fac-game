@@ -36,7 +36,6 @@
   align-items: center;
   height: 4rem;
   justify-content: space-evenly;
-  margin: 1rem auto 0 auto;
 }
 
 .game-instructions-link:hover,
@@ -137,8 +136,8 @@
   color: #0F0A0A;
   font-size: 1rem;
   text-align: center;
-  height: 2vh;
-  width: 2vh;
+  height: 2.5vh;
+  width: 2.5vh;
   position: relative;
   line-height: 1;
 }
@@ -261,6 +260,7 @@
     justify-content: space-evenly;
     width: 60%;
     font-size: 1.4rem;
+    margin: 1rem auto 0 auto;
   }
 
   .instructions-modal {
