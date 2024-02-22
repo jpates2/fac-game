@@ -36,6 +36,7 @@
   align-items: center;
   height: 4rem;
   justify-content: space-evenly;
+  margin: 1rem auto 0 auto;
 }
 
 .game-instructions-link:hover,
@@ -71,11 +72,10 @@
 
 .instructions-modal-button-container,
 .scores-modal-button-container {
-  /* width: 100%; */
   display: flex;
   justify-content: center;
   position: absolute;
-  bottom: 20vh;
+  bottom: 10vh;
 }
 
 .pink-button {
@@ -101,7 +101,7 @@
 .play-button-container {
   display: flex;
   justify-content: center;
-  margin-top: 8rem;
+  margin-top: 12rem;
 }
 
 .play-button {
@@ -154,7 +154,7 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 2fr 1fr;
   position: absolute;
-  top: 24vh;
+  top: 28vh;
 }
 
 .game-timer {
@@ -260,7 +260,6 @@
     flex-direction: row;
     justify-content: space-evenly;
     width: 60%;
-    margin: 1rem auto 0 auto;
     font-size: 1.4rem;
   }
 
