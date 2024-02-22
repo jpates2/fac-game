@@ -46,7 +46,7 @@ function startGame() {
   gamePlaying = true;
   score = 0;
   gameScoreCounter.textContent = score;
-  timer = 30;
+  timer = 300;
   bugs = [];
   buildTable();
   let minsTimer = `${Math.floor(timer / 60)}:${String(timer % 60).padStart(2, '0')}`;
