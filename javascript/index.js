@@ -94,6 +94,17 @@ function buildTable() {
       markBugCell(e);
     });
 
+    bugCurrent.addEventListener("touchstart", function(e) {
+      e.preventDefault();
+      if (clickTimer === undefined) {
+        clickTimer = setTimeout(function() {
+          markBugCell(e);
+          clearTimeout(clickTimer);
+          clickTimer = undefined;
+        }, 1000);
+      }
+    });
+
     bugCurrent.addEventListener("click", function(e) {
       clearTimeout(clickTimer);
       revealBugCell(e);
@@ -163,7 +174,14 @@ function revealBugCell(e) {
 
 function markBugCell(e) {
   e.preventDefault();
-  const flagCell = e.currentTarget;
+  let flagCell;
+  if (e.currentTarget) {
+    flagCell = e.currentTarget;
+    console.log(e.currentTarget);
+  } else {
+    flagCell = e.target;
+    console.log(e.target);
+  }
   if (gamePlaying && !flagCell.classList.contains("revealed-cell")) {
     if (flagCell.textContent === "") {
       flagCell.textContent = "🚩";

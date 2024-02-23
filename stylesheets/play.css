@@ -77,6 +77,10 @@
   bottom: 8vh;
 }
 
+.instructions-modal-text {
+  text-align: center;
+}
+
 .pink-button {
   all: unset;
   background: #DC0073;
