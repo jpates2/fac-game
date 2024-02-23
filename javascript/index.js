@@ -19,6 +19,8 @@ const gameTimerClock = document.querySelector(".game-timer-clock");
 const scoresEmpty = document.querySelector(".scores-empty");
 const scoresTable = document.querySelector(".scores-table");
 
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+
 let gamePlaying, bug, bugCurrent, score, timer, timerCountdown, clickTimer;
 let bugs = [];
 
@@ -89,26 +91,37 @@ function buildTable() {
 
   for (let i = 0; i < boardCell.length; i++) {
     bugCurrent = boardCell[i];
-    bugCurrent.addEventListener("contextmenu", function(e) {
-      e.preventDefault();
-      markBugCell(e);
-    });
 
-    bugCurrent.addEventListener("touchstart", function(e) {
-      e.preventDefault();
-      if (clickTimer === undefined) {
+    if (isTouchDevice) {
+      console.log("touch");
+      bugCurrent.addEventListener("touchstart", function(e) {
+        e.preventDefault();
         clickTimer = setTimeout(function() {
           markBugCell(e);
           clearTimeout(clickTimer);
           clickTimer = undefined;
         }, 1000);
-      }
-    });
+      });
 
-    bugCurrent.addEventListener("click", function(e) {
-      clearTimeout(clickTimer);
-      revealBugCell(e);
-    });
+      bugCurrent.addEventListener("touchend", function(e) {
+        e.preventDefault();
+        if (clickTimer !== undefined) {
+          clearTimeout(clickTimer);
+          revealBugCell(e);
+        }
+      });
+    } else {
+      console.log("nontouch");
+      bugCurrent.addEventListener("contextmenu", function(e) {
+        e.preventDefault();
+        markBugCell(e);
+      });
+
+      bugCurrent.addEventListener("click", function(e) {
+        clearTimeout(clickTimer);
+        revealBugCell(e);
+      });
+    }
   }
 }
 
@@ -166,6 +179,7 @@ function revealBugCell(e) {
       })
 
       bugCell.textContent = numBugs;
+      bugCell.style.fontSize = "1rem";
       bugCell.classList.add("number-cell-colour");
       bugCell.removeEventListener("click", revealBugCell);
     }
@@ -177,16 +191,18 @@ function markBugCell(e) {
   let flagCell;
   if (e.currentTarget) {
     flagCell = e.currentTarget;
-    console.log(e.currentTarget);
   } else {
     flagCell = e.target;
-    console.log(e.target);
   }
   if (gamePlaying && !flagCell.classList.contains("revealed-cell")) {
     if (flagCell.textContent === "") {
       flagCell.textContent = "🚩";
+      if (window.innerWidth <= 600) {
+        flagCell.style.fontSize = "0.5rem";
+      }
     } else {
       flagCell.textContent = "";
+      flagCell.style.fontSize = "";
     }
   }
 }

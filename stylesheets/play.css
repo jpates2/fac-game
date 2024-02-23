@@ -51,7 +51,7 @@
   width: 90vw;
   height: 90vh;
   background: #F5EFED;
-  padding: 4rem 2rem;
+  padding: 0 2rem;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -66,6 +66,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-top: 2rem;
   margin-bottom: 1rem;
 }
 
