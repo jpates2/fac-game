@@ -66,7 +66,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .instructions-modal-button-container,
@@ -74,7 +74,7 @@
   display: flex;
   justify-content: center;
   position: absolute;
-  bottom: 10vh;
+  bottom: 8vh;
 }
 
 .pink-button {
@@ -110,7 +110,7 @@
 
 .game-timer,
 .game-score {
-  font-size: 3rem;
+  font-size: 2rem;
   font-family: "Micro 5";
   display: flex;
   flex-direction: column;
@@ -269,6 +269,12 @@
 
   .instructions-modal-header {
     font-size: 4rem;
+    margin-bottom: 2rem;
+  }
+
+  .instructions-modal-button-container,
+  .scores-modal-button-container {
+    bottom: 12vh;
   }
 
   .board-cell {
