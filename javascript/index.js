@@ -232,7 +232,7 @@ async function populateTopScores() {
   } else {
     scoresEmpty.textContent = "";
     scoresTable.textContent = "";
-    const sortedScores = topScores.sort((a,b) => b[1] - a[1]);
+    const sortedScores = (topScores.sort((a,b) => b[1] - a[1]).slice(0, 10));
     let rank = 1;
     sortedScores.forEach((score) => {
       const scoreItem = document.createElement("tr");
