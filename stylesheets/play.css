@@ -313,4 +313,8 @@
   .scores-table-score {
     min-width: 4rem;
   }
+
+  .instructions-modal-text {
+    margin-top: 2rem;
+  }
 }

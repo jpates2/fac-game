@@ -104,7 +104,7 @@ function buildTable() {
 let currentBug;
 
 const placeBug = function() {
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i <= 15; i++) {
     bugs.push([Math.floor(Math.random() * 10), Math.floor(Math.random() * 10)]);
   }
 
@@ -139,7 +139,7 @@ function revealBugCell(e) {
     } else {
       score++;
       gameScoreCounter.textContent = score;
-      if (score === 90) {
+      if (score === 85) {
         winGame();
         endGame();
       }
