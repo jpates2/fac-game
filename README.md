@@ -1,6 +1,6 @@
 # BUGSWEEPER
 
-Interactive game based on the classic 90s game Minesweeper. Users need to clear the board without clicking on any bugs.
+Interactive game based on the 90s classic Minesweeper. Users need to clear the board without clicking on any bugs.
 
 Built using vanilla JS, HTML and CSS.
 
