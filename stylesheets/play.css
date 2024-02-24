@@ -296,6 +296,7 @@
   .game-timer,
   .game-score {
     font-size: 4rem;
+    align-self: start;
   }
 
   .game-container {
