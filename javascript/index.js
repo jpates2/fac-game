@@ -93,7 +93,6 @@ function buildTable() {
     bugCurrent = boardCell[i];
 
     if (isTouchDevice) {
-      console.log("touch");
       bugCurrent.addEventListener("touchstart", function(e) {
         e.preventDefault();
         clickTimer = setTimeout(function() {
@@ -111,7 +110,6 @@ function buildTable() {
         }
       });
     } else {
-      console.log("nontouch");
       bugCurrent.addEventListener("contextmenu", function(e) {
         e.preventDefault();
         markBugCell(e);
@@ -143,7 +141,6 @@ function revealBugCell(e) {
     const bugCell = e.currentTarget;
     const bugRow = bugCell.parentElement.rowIndex;
     const bugCol = bugCell.cellIndex;
-    bugCell.classList.add("revealed-cell");
     const adjCells = [
       `cell-${bugRow - 1}-${bugCol - 1}`,
       `cell-${bugRow}-${bugCol - 1}`,
@@ -161,6 +158,8 @@ function revealBugCell(e) {
       loseGame();
       endGame();
     } else {
+      if (bugCell.textContent !== "") { return };
+      bugCell.classList.add("revealed-cell");
       score++;
       gameScoreCounter.textContent = score;
       if (score === 85) {
