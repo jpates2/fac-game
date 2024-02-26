@@ -232,7 +232,7 @@ function saveScore(e) {
   endModal.classList.add("hidden-delay");
   endModal.classList.remove("fade-in");
   populateTopScores();
-  scoresModal.classList.remove("hidden");
+  // scoresModal.classList.remove("hidden");
   playAgain();
 }
 
